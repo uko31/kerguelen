@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Le Kerguelen</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/v4-shims.css">  
+  <meta charset="UTF-8">
+</head>
+
+<body>
+
+	{% block navbar %}
+	<div class="w3-bar w3-light-grey">
+		<a href="/kerguelen" class="w3-bar-item w3-button {% if home_menu is defined %}w3-blue-grey{% endif %}">
+			<i class="fa fa-ship"></i> Informations
+		</a>
+
+		<a href="/kerguelen/camera" class="w3-bar-item w3-button {% if camera_menu is defined %}w3-blue-grey{% endif %}">
+			<i class="fa fa-camera"></i> Photo
+		</a>
+
+		<a href="/kerguelen/historique" class="w3-bar-item w3-button {% if historique_menu is defined %}w3-blue-grey{% endif %}">
+		 	<i class="fa fa-history"></i> Historique
+		</a>
+		<a href="#" class="w3-bar-item w3-button w3-right">{% if version %}{{version}}{% else %}???{% endif %}</a>
+	</div>
+	{% endblock %}
+
+	{% block content %}
+	{% endblock %}
+
+	{% block messages%}
+	{% if messages %}
+ 	<div class="w3-margin w3-card-4">
+    	<header class="w3-container w3-deep-orange">
+      		<h4>Messages</h4>
+    	</header>
+		<div class='w3-ul'>
+			{% for message in messages %}
+			<li>
+				<div class="w3-container">
+					{{message}}
+		    	</div>
+			</li>
+			{% endfor %}
+		</div>
+	</div>
+	{% endif %}
+	{% endblock %}
+
+</body>
+
+</html>

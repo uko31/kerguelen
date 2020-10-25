@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <div class="w3-margin w3-card-4">
+    <header class="w3-container w3-blue-grey">
+      <h4>Image la plus récente</h4>
+    </header>
+    <div class="w3-container w3-center w3-margin">
+      {% if image %}
+      <img src="{{image}}" class="w3-border w3-padding" alt="{{image}}">
+      {% else %}
+      <h2>Aucune photo sur la carte</h2>
+      {% endif %}
+    </div>
+  </div>
+    
+  <div class="w3-margin w3-card-4">
+    <header class="w3-container w3-blue-grey">
+      <h4>Actions</h4>
+    </header>
+    <div class="w3-container w3-margin w3-padding">
+      <a class="w3-button w3-round w3-xlarge w3-green w3-block" href="{{ url_for('.camera') }}?photo=new">
+        Prendre une Photo
+      </a>
+    </div>
+    {% if num_images > 1 %}
+    <div class="w3-container w3-margin w3-padding">
+      <a class="w3-button w3-round w3-xlarge w3-deep-orange w3-block" href="{{ url_for('.camera') }}?purge=all">
+        Purger toutes les Photos ({{num_images}} photos)
+      </a>
+    </div>
+    {% endif %}
+    {% if num_images > 10 %}
+    <div class="w3-container w3-margin w3-padding">
+      <a class="w3-button w3-round w3-xlarge w3-deep-orange w3-block" href="{{ url_for('.camera') }}?purge=old">
+        Garder 10 Photos (Purger {{num_images-10}} photos)
+      </a>        
+    </div>
+    {% endif %}
+  </div>  
+  
+{% endblock %}

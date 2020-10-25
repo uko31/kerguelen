@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <div class="w3-margin w3-card w3-round">
+
+    <header class="w3-container w3-blue-grey">
+      <h3>Informations générales</h3>
+    </header>
+
+    <div class="w3-container w3-large">
+      Version du Programme: {{ version }}
+    </div>
+    <div class="w3-container w3-large">
+      Remplissage du disque:
+      <div class="w3-section w3-light-grey w3-margin">
+        <div class="w3-container w3-padding-large w3-{{sd_color}} w3-center" style="width:{{sd_percent}}%">
+          <i class="fa fa-hdd-o"></i> HDD: {{sd_percent}}%
+        </div>
+      </div>    
+    </div>
+
+  </div>
+
+{% endblock %}

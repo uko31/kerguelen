@@ -1,0 +1,3 @@
+graft kerguelen/static
+graft kerguelen/templates
+global-exclude *.pyc

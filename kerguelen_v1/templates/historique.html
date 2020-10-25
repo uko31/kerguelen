@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <div class="w3-margin w3-card-4">
+    <div class="w3-container w3-center w3-padding w3-margin">
+      {% if current_image %}
+      <img src="{{current_image}}" class="w3-border w3-padding" alt="{{current_image}}">
+      {% else %}
+      <h2>Aucune photo sur la carte</h2>
+      {% endif %}
+    </div>
+  </div>
+  
+  <div class="x3-container w3-card-4 w3-margin w3-padding">
+    <ul class="w3-ul w3-hoverable">
+      {% for image, url in images.items() %}
+      <li class="{% if  current_image == url %}w3-blue-grey{% endif %}">
+        <a class="w3-button w3-round w3-deep-orange" href="{{ url_for('.historique') }}?image={{url}}&action=del">
+          <i class="fa fa-trash"></i> Supprimer
+        </a> 
+        <a class="w3-button w3-round w3-green" href="{{ url_for('.historique') }}?image={{url}}&action=view">
+          <i class="fa fa-eye"></i> Voir
+        </a> 
+        <span class='w3-xlarge'>{{image}}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  
+{% endblock %}
