@@ -87,7 +87,6 @@ def historique():
   if ( action == 'view' ):
     current_image = request.args.get('image')
   elif ( action == 'del' ):
-    current_image = request.args.get('image')
     purge(list([current_image]))
     images = get_images(os.path.join(root_path, 'static'))
   else:
