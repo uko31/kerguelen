@@ -75,7 +75,7 @@ def take_a_picture(app):
       camera.start_preview()
       sleep(float(delay))
       weather = get_weather(app.config)
-      camera.annotate_text = label + "\n" + weather
+      camera.annotate_text = label + "\n" + weather.encode('utf-8')
       camera.annotate_text_size = text_size
       camera.annotate_background = Color(background)
       camera.capture(filename, format = 'jpeg', quality = quality)
