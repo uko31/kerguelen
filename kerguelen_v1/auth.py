@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 
+import os
+
 from flask_httpauth import HTTPBasicAuth
 from werkzeug.security import check_password_hash
 
 auth = HTTPBasicAuth();
 
-USERNAME = 'pbkdf2:sha256:150000$bx2lNwuv$f9d9d721408e61b754af049428defda606cac876f6404c9f47fa963d4560c7bd'
-PASSWORD = 'pbkdf2:sha256:150000$kpjKcRG2$683bc1759a12a48e15dcce40ee2e6da7352ddf49e89f5cf08c3b71faccaee8d1'
+USERNAME = os.environ.get('FLASK_USERNAME')
+PASSWORD= os.environ.get('FLASK_PASSWORD')
 
 @auth.verify_password
 def check_security(username, password):
