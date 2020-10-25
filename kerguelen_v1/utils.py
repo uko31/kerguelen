@@ -16,7 +16,7 @@ root_path = os.path.dirname(os.path.abspath(__file__))
 
 def get_weather(config):
   #api_key     = config['WEATHER_API_KEY']
-  api_key     = str(base64.b64decode(config['WEATHER_API_KEY']), "utf-8")
+  api_key     = str(b64decode(config['WEATHER_API_KEY']), "utf-8")
   latitude    = config['WEATHER_LATITUDE']
   longitude   = config['WEATHER_LONGITUDE']
   weather_url = config['WEATHER_URL']
