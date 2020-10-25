@@ -26,7 +26,7 @@ def get_weather(config):
   r = requests.get(url)
   data = json.loads(r.text)
 
-  str = "{} (nuage: {}%) - Temp: {} - Vent: {} km/h ({}) - {} bars".format(
+  weather_str = "{} (nuage: {}%) - Temp: {} - Vent: {} km/h ({}) - {} bars".format(
     data['weather'][0]['description'],
     data['clouds']['all'],
     data["main"]["temp"],
@@ -34,7 +34,7 @@ def get_weather(config):
     data['wind']['deg'],
     data["main"]["pressure"]
   )
-  return str
+  return weather_str
 
 
 def now():
