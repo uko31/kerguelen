@@ -55,14 +55,14 @@ def purge(images):
   for image in images:
     os.remove(os.path.join(root_path, image[1:]))
 
-def take_a_picture(config):
-  mode       = config['PHOTO_MODE']
-  delay      = config['PHOTO_DELAY']
-  width      = config['PHOTO_WIDTH']
-  height     = config['PHOTO_HEIGHT']
-  text_size  = config['PHOTO_TEXT_SIZE']
-  background = config['PHOTO_BACKGROUND']
-  quality    = config['PHOTO_QUALITY']
+def take_a_picture(app):
+  mode       = app.config['PHOTO_MODE']
+  delay      = app.config['PHOTO_DELAY']
+  width      = app.config['PHOTO_WIDTH']
+  height     = app.config['PHOTO_HEIGHT']
+  text_size  = app.config['PHOTO_TEXT_SIZE']
+  background = app.config['PHOTO_BACKGROUND']
+  quality    = app.config['PHOTO_QUALITY']
 
   instant, label = now()
   filename = os.path.join(os.path.dirname(__file__), 'static/'+instant+'.jpg')
@@ -73,14 +73,14 @@ def take_a_picture(config):
       camera.awb_mode = mode
       camera.start_preview()
       sleep(float(delay))
-      weather = get_weather(config)
+      weather = get_weather(app.config)
       camera.annotate_text = label + "\n" + weather
       camera.annotate_text_size = text_size
       camera.annotate_background = Color(background)
       camera.capture(filename, format = 'jpeg', quality = quality)
 
   except Exception as e:
-      print(e)
+      app.logger.error(e)
       return False
 
   finally:
