@@ -15,7 +15,7 @@ except:
 root_path = os.path.dirname(os.path.abspath(__file__))
 
 def get_weather(config):
-  api_key     = config['WEATHER_API_KEY']:
+  api_key     = config['WEATHER_API_KEY']
   latitude    = config['WEATHER_LATITUDE']
   longitude   = config['WEATHER_LONGITUDE']
   weather_url = config['WEATHER_URL']
