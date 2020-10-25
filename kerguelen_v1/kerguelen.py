@@ -43,7 +43,7 @@ def camera():
 
     photo_param = request.args.get('photo')
     if photo_param == 'new':
-      if not take_a_picture(app.config):
+      if not take_a_picture(app):
         messages.append('Impossible de prendre la photo, problème avec la caméra.')
 
     purge_param = request.args.get('purge')
