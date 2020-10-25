@@ -81,6 +81,7 @@ def take_a_picture(app):
       camera.capture(filename, format = 'jpeg', quality = quality)
 
   except Exception as e:
+      print(weather)
       app.logger.error(e)
       return False
 
