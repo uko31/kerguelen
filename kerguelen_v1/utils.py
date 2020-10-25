@@ -6,7 +6,7 @@ import json
 
 from datetime import datetime
 from time import sleep
-from base64 import b64decode
+from unidecode import unidecode
 try:
     from picamera import PiCamera, Color
 except:
@@ -33,7 +33,7 @@ def get_weather(config):
     data['wind']['deg'],
     data["main"]["pressure"]
   )
-  return weather_str
+  return unidecode(weather_str)
 
 
 def now():
@@ -74,7 +74,7 @@ def take_a_picture(app):
       camera.awb_mode = mode
       camera.start_preview()
       sleep(float(delay))
-      weather = get_weather(app.config).encode('utf-8').decode('utf-8')
+      weather = get_weather(app.config)
       camera.annotate_text = label + "\n" + weather
       camera.annotate_text_size = text_size
       camera.annotate_background = Color(background)
