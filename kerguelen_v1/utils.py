@@ -7,7 +7,7 @@ import json
 from datetime import datetime
 from time import sleep
 try:
-    from picamera import PiCamera
+    from picamera import PiCamera, Color
 except:
     pass
 
