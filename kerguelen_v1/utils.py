@@ -6,6 +6,7 @@ import json
 
 from datetime import datetime
 from time import sleep
+from base64 import b64decode
 try:
     from picamera import PiCamera, Color
 except:
@@ -14,7 +15,8 @@ except:
 root_path = os.path.dirname(os.path.abspath(__file__))
 
 def get_weather(config):
-  api_key     = config['WEATHER_API_KEY']
+  #api_key     = config['WEATHER_API_KEY']
+  api_key     = str(base64.b64decode(config['WEATHER_API_KEY']), "utf-8")
   latitude    = config['WEATHER_LATITUDE']
   longitude   = config['WEATHER_LONGITUDE']
   weather_url = config['WEATHER_URL']
